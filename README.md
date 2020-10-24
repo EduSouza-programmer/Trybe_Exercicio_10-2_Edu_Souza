@@ -46,6 +46,8 @@ Nos exercícios a seguir, você trabalhará com uma estrutura de dados represent
 
 - <p><a href="#3"> :pushpin: 3.</a> Reescreva o teste do exercício anterior, desta vez utilizando a sintaxe de async/await;</p>
 
+- <p><a href="#4"> :pushpin: 4.</a> O código abaixo busca no GitHub de um usuário, de acordo com a URL, seus repositórios, e retorna uma lista como resultado. Dada a URL 'https://api.github.com/users/tryber/repos', faça um teste que verifique que os repositórios 'sd-01-week4-5-project-todo-list' e 'sd-01-week4-5-project-meme-generator' se encontram nessa lista;</p>
+
 ## :books: Exercícios
 
 ### 1°
@@ -199,6 +201,10 @@ describe('Verificando a função getUserName', () => {
 #
 
 ### 4°
+
+O código abaixo busca no GitHub de um usuário, de acordo com a URL, seus repositórios, e retorna uma lista como resultado. Dada a URL 'https://api.github.com/users/tryber/repos', faça um teste que verifique que os repositórios 'sd-01-week4-5-project-todo-list' e 'sd-01-week4-5-project-meme-generator' se encontram nessa lista
+
+Obs: Os repositórios 'sd-01-week4-5-project-todo-list' e 'sd-01-week4-5-project-meme-generator' não existem mais no retorno, utilizei dois aleatoriamente para realizar o exercício proposto. Abaixo estão específicados no código.
 
 #### Resposta:
 
