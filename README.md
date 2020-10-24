@@ -50,6 +50,8 @@ Nos exercícios a seguir, você trabalhará com uma estrutura de dados represent
 
 - <p><a href="#5"> :pushpin: 5.</a> Para este exercício, tente adivinhar a saída dos console.log dos testes abaixo sem executá-los e veja se compreendeu bem o funcionamento do beforeEach e do afterEach;</p>
 
+- <p><a href="#6"> :pushpin: 6.</a> Nesse exercício, você irá criar funções parecidas com código abaixo - o mesmo que foi usado como exemplo sobre os testes de promise;</p>
+
 ## :books: Exercícios
 
 ### 1°
@@ -280,13 +282,92 @@ describe('Scoped / Nested block', () => {
 
 ### 6°
 
+Nesse exercício, você irá criar funções parecidas com código abaixo - o mesmo que foi usado como exemplo sobre os testes de promise.
+
+- Adicione uma funcionalidade para buscar pelo nome do animal - crie uma função que deverá passar no teste abaixo.
+
+  Dica: use o código do exemplo dado para criar uma nova função, analise os testes antes de iniciar.
+
+- Adicione uma nova funcionalidade para buscar pela idade dos animais. O retorno deve ser um array de objetos, mas, caso não ache nenhum, retorne uma mensagem de erro. Escreva tanto a função como o seu teste.
+
 #### Resposta:
 
 <details>
  <summary> :pencil2: Código Javascript</summary>
 
 ```js
+ const Animals = [
+  { name: 'Dorminhoco', age: 1, type: 'Dog' },
+  { name: 'Soneca', age: 2, type: 'Dog' },
+  { name: 'Preguiça', age: 5, type: 'Cat' },
+];
 
+const findAnimalByAge = age => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const findAnimal = Animals.find(
+        ({ age: animalAge }) => animalAge === age
+      );
+      return findAnimal
+        ? resolve(findAnimal)
+        : reject('Nenhum animal encontrado por essa idade');
+    }, 300);
+  });
+};
+
+const findAnimalByName = name => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const findAnimal = Animals.find(
+        ({ name: animalName }) => animalName === name
+      );
+      return findAnimal
+        ? resolve(findAnimal)
+        : reject('Nenhum animal com esse nome!');
+    }, 300);
+  });
+};
+
+const getAnimal = async name => {
+  return await findAnimalByName(name);
+};
+
+describe('Testando promise - findAnimalByName', () => {
+  describe('Quando existe o animal com o nome procurado', () => {
+    test('Retorne o objeto do animal', () => {
+      expect.assertions(1);
+      return getAnimal('Dorminhoco').then(animal => {
+        expect(animal).toEqual({ name: 'Dorminhoco', age: 1, type: 'Dog' });
+      });
+    });
+  });
+
+  describe('Quando não existe o animal com o nome procurado', () => {
+    test('Retorna um erro', () => {
+      expect.assertions(1);
+      return getAnimal('Bob').catch(error =>
+        expect(error).toEqual('Nenhum animal com esse nome!')
+      );
+    });
+  });
+
+  describe('Encontre o animal pela idade', () => {
+    it('Deve retorna um objeto procurado pela idade', () => {
+      return expect(findAnimalByAge(1)).resolves.toEqual({
+        name: 'Dorminhoco',
+        age: 1,
+        type: 'Dog',
+      });
+    });
+  });
+  describe('Quando não existe o animal com a idade procurada', () => {
+    it('Deve retorna um erro', () => {
+      return expect(findAnimalByAge(10)).rejects.toBe(
+        'Nenhum animal encontrado por essa idade'
+      );
+    });
+  });
+});
 ```
 
 </details>
