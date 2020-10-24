@@ -20,8 +20,7 @@ const getUserName = userID => {
 describe('Verificando a função getUserName', () => {
   describe('Caso o usuário é encontrado', () => {
     it('Deve retorna o nome do usuário encontrado', async () => {
-      const nameUser = await getUserName(4);
-      expect(nameUser).toEqual('Mark');
+      expect(await getUserName(4)).toEqual('Mark');
     });
   });
   describe('Caso o usuário não for encontrado', () => {

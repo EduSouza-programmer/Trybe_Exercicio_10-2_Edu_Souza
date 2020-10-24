@@ -20,14 +20,13 @@ const getUserName = userID => {
 describe('Verificando a função getUserName', () => {
   describe('Caso o usuário é encontrado', () => {
     it('Deve retorna o nome do usuário encontrado', () => {
-      return getUserName(4).then(name => expect(name).toEqual('Mark'));
+      return expect(getUserName(4)).resolves.toEqual('Mark');
     });
   });
   describe('Caso o usuário não for encontrado', () => {
     it('Deve retorna um objeto com a propriedade erro', () => {
-      return getUserName(7).catch(error => {
-        console.log(error);
-        expect(error).toEqual({ error: 'User with 7 not found.' });
+      return expect(getUserName(7)).rejects.toEqual({
+        error: 'User with 7 not found.',
       });
     });
   });

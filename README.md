@@ -120,14 +120,13 @@ const getUserName = userID => {
 describe('Verificando a função getUserName', () => {
   describe('Caso o usuário é encontrado', () => {
     it('Deve retorna o nome do usuário encontrado', () => {
-      return getUserName(4).then(name => expect(name).toEqual('Mark'));
+      return expect(getUserName(4)).resolves.toEqual('Mark');
     });
   });
   describe('Caso o usuário não for encontrado', () => {
     it('Deve retorna um objeto com a propriedade erro', () => {
-      return getUserName(7).catch(error => {
-        console.log(error);
-        expect(error).toEqual({ error: 'User with 7 not found.' });
+      return expect(getUserName(7)).rejects.toEqual({
+        error: 'User with 7 not found.',
       });
     });
   });
@@ -178,8 +177,7 @@ const getUserName = userID => {
 describe('Verificando a função getUserName', () => {
   describe('Caso o usuário é encontrado', () => {
     it('Deve retorna o nome do usuário encontrado', async () => {
-      const nameUser = await getUserName(4);
-      expect(nameUser).toEqual('Mark');
+      expect(await getUserName(4)).toEqual('Mark');
     });
   });
   describe('Caso o usuário não for encontrado', () => {
@@ -230,9 +228,12 @@ const URL = 'https://api.github.com/users/tryber/repos';
 
 describe('Repositório github', () => {
   it('Deve passar se os dois repositório forem encontrados', async () => {
-    const listRepo = await getRepos(URL);
-    expect(listRepo).toContain('challenge-bug-hunting-youtrybe-squad-1');
-    expect(listRepo).toContain('challenge-bug-hunting-youtrybe-squad-4');
+    expect(await getRepos(URL)).toContain(
+      'challenge-bug-hunting-youtrybe-squad-1'
+    );
+    expect(await getRepos(URL)).toContain(
+      'challenge-bug-hunting-youtrybe-squad-4'
+    );
   });
 });
 ```
