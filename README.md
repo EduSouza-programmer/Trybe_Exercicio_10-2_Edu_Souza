@@ -48,6 +48,8 @@ Nos exercícios a seguir, você trabalhará com uma estrutura de dados represent
 
 - <p><a href="#4"> :pushpin: 4.</a> O código abaixo busca no GitHub de um usuário, de acordo com a URL, seus repositórios, e retorna uma lista como resultado. Dada a URL 'https://api.github.com/users/tryber/repos', faça um teste que verifique que os repositórios 'sd-01-week4-5-project-todo-list' e 'sd-01-week4-5-project-meme-generator' se encontram nessa lista;</p>
 
+- <p><a href="#5"> :pushpin: 5.</a> Para este exercício, tente adivinhar a saída dos console.log dos testes abaixo sem executá-los e veja se compreendeu bem o funcionamento do beforeEach e do afterEach;</p>
+
 ## :books: Exercícios
 
 ### 1°
@@ -212,7 +214,25 @@ Obs: Os repositórios 'sd-01-week4-5-project-todo-list' e 'sd-01-week4-5-project
  <summary> :pencil2: Código Javascript</summary>
 
 ```js
+const fetch = require('node-fetch');
 
+const getRepos = url => {
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      return data.map(repo => repo.name);
+    });
+};
+
+const URL = 'https://api.github.com/users/tryber/repos';
+
+describe('Repositório github', () => {
+  it('Deve passar se os dois repositório forem encontrados', async () => {
+    const listRepo = await getRepos(URL);
+    expect(listRepo).toContain('challenge-bug-hunting-youtrybe-squad-1');
+    expect(listRepo).toContain('challenge-bug-hunting-youtrybe-squad-4');
+  });
+});
 ```
 
 </details>
@@ -227,13 +247,25 @@ Obs: Os repositórios 'sd-01-week4-5-project-todo-list' e 'sd-01-week4-5-project
 
 ### 5°
 
+Para este exercício, tente adivinhar a saída dos console.log dos testes abaixo sem executá-los e veja se compreendeu bem o funcionamento do beforeEach e do afterEach.
+
 #### Resposta:
 
 <details>
  <summary> :pencil2: Código Javascript</summary>
 
 ```js
+beforeEach(() => console.log('1 - beforeEach')); // 1° 
+afterEach(() => console.log('1 - afterEach')); // 3°
 
+test('', () => console.log('1 - test')); // 2°
+
+describe('Scoped / Nested block', () => {
+  beforeEach(() => console.log('2 - beforeEach')); // 4°
+  afterEach(() => console.log('2 - afterEach')); // 6°
+
+  test('', () => console.log('2 - test')); // 5°
+});
 ```
 
 </details>
