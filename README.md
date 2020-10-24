@@ -44,7 +44,7 @@ Nos exercícios a seguir, você trabalhará com uma estrutura de dados represent
 
 - <p><a href="#2"> :pushpin: 2.</a> Utilizando a sintaxe de Promise, faça um teste que verifique o resultado da função getUserName para o caso em que o usuário é encontrado, e também um teste para o caso em que o usuário não é encontrado;</p>
 
-- <p><a href="#1"> :pushpin: 1.</a> Crie um array com strings no formato NOME_DO_LIVRO - GÊNERO_DO_LIVRO - NOME_DA_PESSOA_AUTORA;</p>
+- <p><a href="#3"> :pushpin: 3.</a> Reescreva o teste do exercício anterior, desta vez utilizando a sintaxe de async/await;</p>
 
 ## :books: Exercícios
 
@@ -112,7 +112,7 @@ const getUserName = userID => {
 };
 
 describe('Verificando a função getUserName', () => {
-  describe('Caso se o usuário é encontrado', () => {
+  describe('Caso o usuário é encontrado', () => {
     it('Deve retorna o nome do usuário encontrado', () => {
       return getUserName(4).then(name => expect(name).toEqual('Mark'));
     });
@@ -140,13 +140,52 @@ describe('Verificando a função getUserName', () => {
 
 ### 3°
 
+Reescreva o teste do exercício anterior, desta vez utilizando a sintaxe de async/await.
+
+- Dica: Utilize o try/catch para o caso de erro.
+
 #### Resposta:
 
 <details>
  <summary> :pencil2: Código Javascript</summary>
 
 ```js
+const users = {
+  4: { name: 'Mark' },
+  5: { name: 'Paul' },
+};
 
+const findUserById = id => {
+  return new Promise((resolve, reject) => {
+    if (users[id]) {
+      return resolve(users[id]);
+    }
+
+    return reject({ error: 'User with ' + id + ' not found.' });
+  });
+};
+
+const getUserName = userID => {
+  return findUserById(userID).then(user => user.name);
+};
+
+describe('Verificando a função getUserName', () => {
+  describe('Caso o usuário é encontrado', () => {
+    it('Deve retorna o nome do usuário encontrado', async () => {
+      const nameUser = await getUserName(4);
+      expect(nameUser).toEqual('Mark');
+    });
+  });
+  describe('Caso o usuário não for encontrado', () => {
+    it('Deve retorna um objeto com a propriedade erro usando try', async () => {
+      try {
+        await getUserName(7);
+      } catch (error) {
+        expect(error).toEqual({ error: 'User with 7 not found.' });
+      }
+    });
+  });
+});
 ```
 
 </details>

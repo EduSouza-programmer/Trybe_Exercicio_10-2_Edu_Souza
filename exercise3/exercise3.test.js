@@ -19,16 +19,18 @@ const getUserName = userID => {
 
 describe('Verificando a função getUserName', () => {
   describe('Caso o usuário é encontrado', () => {
-    it('Deve retorna o nome do usuário encontrado', () => {
-      return getUserName(4).then(name => expect(name).toEqual('Mark'));
+    it('Deve retorna o nome do usuário encontrado', async () => {
+      const nameUser = await getUserName(4);
+      expect(nameUser).toEqual('Mark');
     });
   });
   describe('Caso o usuário não for encontrado', () => {
-    it('Deve retorna um objeto com a propriedade erro', () => {
-      return getUserName(7).catch(error => {
-        console.log(error);
+    it('Deve retorna um objeto com a propriedade erro usando try', async () => {
+      try {
+        await getUserName(7);
+      } catch (error) {
         expect(error).toEqual({ error: 'User with 7 not found.' });
-      });
+      }
     });
   });
 });
