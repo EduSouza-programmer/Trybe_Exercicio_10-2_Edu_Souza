@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  <strike>Exercício 10-2: Jest - Testes Assíncronos - Concluído o/ o/ o/ :star:</strike>
+  Exercício 10-2: Jest - Testes Assíncronos - Concluído o/ o/ o/ :star:
 </h3>
 
 <blockquote align="center">“Quanto mais você estuda, mais aprende e se aproxima de realizar seu sonhos!”</blockquote>
