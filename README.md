@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  Exercício 8-2: JS_ES6 - Higher Order Functions--map, filter - Concluído o/ o/ o/ :star:
+  <strike>Exercício 10-2: Jest - Testes Assíncronos - Concluído o/ o/ o/ :star:</strike>
 </h3>
 
 <blockquote align="center">“Quanto mais você estuda, mais aprende e se aproxima de realizar seu sonhos!”</blockquote>
@@ -40,11 +40,45 @@ Nos exercícios a seguir, você trabalhará com uma estrutura de dados represent
 
 ### :clipboard: Sumário
 
+- <p><a href="#1"> :pushpin: 1.</a> Escreva um teste que verifique a chamada do callback de uma função uppercase, que transforma as letras de uma palavra em letras maiúsculas. Lembre-se de ter cuidado com os falsos positivos em testes assíncronos;</p>
+
 - <p><a href="#1"> :pushpin: 1.</a> Crie um array com strings no formato NOME_DO_LIVRO - GÊNERO_DO_LIVRO - NOME_DA_PESSOA_AUTORA;</p>
 
 ## :books: Exercícios
 
 ### 1°
+
+Escreva um teste que verifique a chamada do callback de uma função uppercase, que transforma as letras de uma palavra em letras maiúsculas. Lembre-se de ter cuidado com os falsos positivos em testes assíncronos.
+
+#### Resposta:
+
+<details>
+ <summary> :pencil2: Código Javascript</summary>
+
+```js
+const uppercase = require('./exercise1');
+
+describe('callback uppercase', () => {
+  it('Deve retornar letras em maiúscula', done => {
+    uppercase('xablau', srt => {
+      expect(srt).toBe('XABLAU');
+      done();
+    });
+  });
+});
+```
+
+</details>
+
+<p align="right">
+    <a href="#clipboard-Sumário">
+    <img alt="Back Sumário" src="https://img.shields.io/badge/Back-Sum%C3%A1rio-orange">
+  </a>
+</p>
+
+#
+
+### 2°
 
 #### Resposta:
 
@@ -58,9 +92,90 @@ Nos exercícios a seguir, você trabalhará com uma estrutura de dados represent
 </details>
 
 <p align="right">
-   <a href="https://edusouza-programmer.github.io/Trybe_Exercicio_3-3_Edu_Souza//parte-1/challenge_1-o_modelo_boxer.html">
-    <img alt="Go index.html" src="https://img.shields.io/badge/Go-index.html-orange">
-    </a>&nbsp;
+    <a href="#clipboard-Sumário">
+    <img alt="Back Sumário" src="https://img.shields.io/badge/Back-Sum%C3%A1rio-orange">
+  </a>
+</p>
+
+#
+
+### 3°
+
+#### Resposta:
+
+<details>
+ <summary> :pencil2: Código Javascript</summary>
+
+```js
+
+```
+
+</details>
+
+<p align="right">
+    <a href="#clipboard-Sumário">
+    <img alt="Back Sumário" src="https://img.shields.io/badge/Back-Sum%C3%A1rio-orange">
+  </a>
+</p>
+
+#
+
+### 4°
+
+#### Resposta:
+
+<details>
+ <summary> :pencil2: Código Javascript</summary>
+
+```js
+
+```
+
+</details>
+
+<p align="right">
+    <a href="#clipboard-Sumário">
+    <img alt="Back Sumário" src="https://img.shields.io/badge/Back-Sum%C3%A1rio-orange">
+  </a>
+</p>
+
+#
+
+### 5°
+
+#### Resposta:
+
+<details>
+ <summary> :pencil2: Código Javascript</summary>
+
+```js
+
+```
+
+</details>
+
+<p align="right">
+    <a href="#clipboard-Sumário">
+    <img alt="Back Sumário" src="https://img.shields.io/badge/Back-Sum%C3%A1rio-orange">
+  </a>
+</p>
+
+#
+
+### 6°
+
+#### Resposta:
+
+<details>
+ <summary> :pencil2: Código Javascript</summary>
+
+```js
+
+```
+
+</details>
+
+<p align="right">
     <a href="#clipboard-Sumário">
     <img alt="Back Sumário" src="https://img.shields.io/badge/Back-Sum%C3%A1rio-orange">
   </a>

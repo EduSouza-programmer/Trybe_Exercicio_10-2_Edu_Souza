@@ -1,0 +1,15 @@
+{
+	"name": "10-2_jest_testes_assincronos",
+	"version": "1.0.0",
+	"description": "<h1 align=\"center\">     <img alt=\"Image Trybe\" src=\"https://i.ibb.co/d4W2x4g/trybe.png\" width=\"400px\" /> </h1>",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"jest": "^26.6.1"
+	}
+}
